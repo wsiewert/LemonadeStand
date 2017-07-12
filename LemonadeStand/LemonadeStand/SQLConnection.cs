@@ -6,16 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class UserInterface
+    class SQLConnection
     {
-        public void DisplayRules()
-        {
-
-        }
-
-        public void DisplayStoreMenu()
-        {
-
-        }
     }
 }
