@@ -8,9 +8,21 @@ namespace LemonadeStand
 {
     class Game
     {
+        UserInterface userInterface = new UserInterface();
+        Player player1;
+
         public void StartGame()
         {
+            userInterface.DisplayRules();
+            //ask player name
+            //ask how long to play for, at least 7 days.
+            Console.WriteLine("press any key to continue...");
+            Console.ReadLine();
+        }
 
+        public void PlayGame()
+        {
+            //call day object x times until a winner.
         }
     }
 }

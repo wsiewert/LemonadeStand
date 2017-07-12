@@ -10,12 +10,7 @@ namespace LemonadeStand
     {
         public void DisplayRules()
         {
-
-        }
-
-        public void DisplayStoreMenu()
-        {
-
+            Console.WriteLine("Rules to come...");
         }
     }
 }
