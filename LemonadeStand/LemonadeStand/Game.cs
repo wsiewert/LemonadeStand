@@ -21,7 +21,7 @@ namespace LemonadeStand
 
         public void StartGame()
         {
-            dayCounter = 0;
+            dayCounter = 1;
             userInterface.DisplayRules();
             player1 = new Player();
             player1.SetName();
@@ -34,6 +34,10 @@ namespace LemonadeStand
             while (dayCounter <= 7)
             {
                 Day day = new Day(random);
+                Console.WriteLine("");
+                Console.WriteLine("Day: {0}", dayCounter);
+                Console.WriteLine("Money: {0}", player1.GetMoney());
+                Console.WriteLine("Forecast: And ");
                 //get weather from day
                 //store
                 //recipe
