@@ -52,16 +52,16 @@ namespace LemonadeStand
             switch (itemName)
             {
                 case "sugar":
-                    sugarInventory.Remove(sugar);
+                    sugarInventory.RemoveAt(0);
                     break;
                 case "lemon":
-                    lemonInventory.Remove(lemon);
+                    lemonInventory.RemoveAt(0);
                     break;
                 case "cup":
-                    cupInventory.Remove(cup);
+                    cupInventory.RemoveAt(0);
                     break;
                 case "ice":
-                    iceInventory.Remove(ice);
+                    iceInventory.RemoveAt(0);
                     break;
                 default:
                     break;

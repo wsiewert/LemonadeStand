@@ -15,14 +15,9 @@ namespace LemonadeStand
 
         }
 
-        public void GetDayOfWeek()
+        public void StartDay()
         {
 
-        }
-
-        public void GetCustomer()
-        {
-            //call x amount of customers to purchase
         }
     }
 }
