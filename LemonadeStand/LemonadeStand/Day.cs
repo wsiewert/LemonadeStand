@@ -8,6 +8,14 @@ namespace LemonadeStand
 {
     class Day
     {
+
+        List<string> weatherType = new List<string>() { "rain", "sunny", "cloudy" };
+
+        public Day(Random random)
+        {
+
+        }
+
         public void GetDayOfWeek()
         {
 

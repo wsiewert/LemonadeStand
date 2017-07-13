@@ -9,6 +9,7 @@ namespace LemonadeStand
     class Game
     {
         UserInterface userInterface = new UserInterface();
+        Random random = new Random();
         Player player1;
 
         public void StartGame()

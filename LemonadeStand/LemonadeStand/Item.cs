@@ -9,21 +9,15 @@ namespace LemonadeStand
     abstract class Item
     {
         protected decimal price;
-        protected int quantity;
 
         public Item()
         {
-            quantity = 0;
+
         }
 
         public decimal GetPrice()
         {
             return price;
-        }
-
-        public int GetQuantity()
-        {
-            return quantity;
         }
     }
 }

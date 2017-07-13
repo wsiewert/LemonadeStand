@@ -8,29 +8,14 @@ namespace LemonadeStand
 {
     class Inventory
     {
-        int lemon;
-        int cup;
-        int sugar;
-        int iceCube;
+        Sugar sugar;
+        Lemon lemon;
+        Cup cup;
+        Ice ice;
 
-        public int GetAmountLemon()
+        public Inventory()
         {
-            return lemon;
-        }
-
-        public int GetAmountCup()
-        {
-            return cup;
-        }
-
-        public int GetAmountSugar()
-        {
-            return sugar;
-        }
-
-        public int GetAmountIceCube()
-        {
-            return iceCube;
+            
         }
     }
 }

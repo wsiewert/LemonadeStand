@@ -15,10 +15,7 @@ namespace LemonadeStand
 
         public Store()
         {
-            lemon = new Lemon();
-            sugar = new Sugar();
-            ice = new Ice();
-            cup = new Cup();
+            
         }
     }
 }
