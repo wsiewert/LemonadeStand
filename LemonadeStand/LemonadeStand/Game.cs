@@ -37,7 +37,7 @@ namespace LemonadeStand
                 Console.WriteLine("");
                 Console.WriteLine("Day: {0}", dayCounter);
                 Console.WriteLine("Money: {0}", player1.GetMoney());
-                Console.WriteLine("Forecast: And ");
+                Console.WriteLine("Forecast: {0} And Sunny", day.GetForecastTemperature());
                 //get weather from day
                 //store
                 //recipe

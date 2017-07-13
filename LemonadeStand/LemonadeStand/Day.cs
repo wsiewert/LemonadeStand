@@ -20,5 +20,10 @@ namespace LemonadeStand
         {
             
         }
+
+        public int GetForecastTemperature()
+        {
+           return weather.GetForecastTemperature();
+        }
     }
 }
