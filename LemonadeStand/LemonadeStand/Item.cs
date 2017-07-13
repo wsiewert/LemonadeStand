@@ -9,15 +9,16 @@ namespace LemonadeStand
     abstract class Item
     {
         protected decimal price;
-
-        public Item()
-        {
-
-        }
+        protected string name;
 
         public decimal GetPrice()
         {
             return price;
+        }
+
+        public string GetName()
+        {
+            return name;
         }
     }
 }

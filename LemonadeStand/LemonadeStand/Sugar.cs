@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Sugar
+    class Sugar : Item
     {
+        public Sugar()
+        {
+            name = "sugar";
+            price = 1;
+        }
     }
 }

@@ -15,6 +15,9 @@ namespace LemonadeStand
         public void StartGame()
         {
             userInterface.DisplayRules();
+            player1 = new Player();
+            player1.SetName();
+            Console.WriteLine(player1.GetName());
             //ask player name
             //ask how long to play for, at least 7 days.
             Console.WriteLine("press any key to continue...");

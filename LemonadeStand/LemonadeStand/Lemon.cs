@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         public Lemon()
         {
+            name = "lemon";
             price = 1;
         }
     }
