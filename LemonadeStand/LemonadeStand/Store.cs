@@ -8,19 +8,22 @@ namespace LemonadeStand
 {
     class Store
     {
+        Wallet playerWallet;
+        Inventory playerInventory;
 
-        public Store()
+        public Store(Player player)
         {
-
+            playerWallet = player.wallet;
+            playerInventory = player.inventory;
         }
 
         public void DisplayStoreOptions()
         {
             Console.WriteLine("Please Purchase what you need:");
-            Console.WriteLine("1 - Cup (x10) - {0}", Cup.Price);
-            Console.WriteLine("2 - Sugar (x10) - {0}", Sugar.Price);
-            Console.WriteLine("3 - Lemon (x10) - {0}", Lemon.Price);
-            Console.WriteLine("4 - Ice (x10) - {0}", Ice.Price);
+            Console.WriteLine("1 - Cup (x10) - ${0}", Cup.Price);
+            Console.WriteLine("2 - Sugar (x10) -${0}", Sugar.Price);
+            Console.WriteLine("3 - Lemon (x10) - ${0}", Lemon.Price);
+            Console.WriteLine("4 - Ice (x10) - ${0}", Ice.Price);
         }
 
         public void GetPurchasedItem()
@@ -30,7 +33,10 @@ namespace LemonadeStand
             {
                 case "1":
                     //call add item
+                    playerInventory.AddItem("cup", 10);
                     //call wallet price drop
+                    playerWallet.SubtractCash(Cup.Price);
+                    Console.WriteLine("***Yay you purchased something***");
                     break;
                 case "2":
                     break;

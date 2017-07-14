@@ -9,12 +9,13 @@ namespace LemonadeStand
     class Player
     {
         protected string name;
-        protected decimal money;
-        Inventory inventory;
+        public Inventory inventory;
+        public Wallet wallet;
 
         public Player()
         {
             inventory = new Inventory();
+            wallet = new Wallet();
         }
 
         public string GetName()
@@ -22,20 +23,9 @@ namespace LemonadeStand
             return name;
         }
 
-        public decimal GetMoney()
-        { 
-            return money;
-        }
-
         public void SetName()
         {
             name = Console.ReadLine();
         }
-
-        public void AddMoney(decimal money)
-        {
-            this.money += money;
-        }
-
     }
 }

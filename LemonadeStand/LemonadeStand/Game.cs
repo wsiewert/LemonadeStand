@@ -10,11 +10,12 @@ namespace LemonadeStand
     {
         UserInterface userInterface = new UserInterface();
         Random random = new Random();
+        Player player;
         Store store;
-        Player player1;
+        Day day;
         int dayCounter;
         int daysToPlay;
-
+        
         public Game()
         {
 
@@ -24,9 +25,9 @@ namespace LemonadeStand
         {
             dayCounter = 1;
             userInterface.DisplayRules();
-            player1 = new Player();
-            player1.SetName();
-            Console.WriteLine(player1.GetName());
+            player = new Player();
+            player.SetName();
+            Console.WriteLine(player.GetName());
 
 
             GetDaysToPlay();
@@ -34,15 +35,15 @@ namespace LemonadeStand
 
             while (dayCounter <= daysToPlay)
             {
-                Day day = new Day(random);
+                day = new Day(random);
                 //display stats
                 Console.WriteLine("");
                 Console.WriteLine("===================================");
                 Console.WriteLine("Day: {0}", dayCounter);
-                Console.WriteLine("Money: {0}", player1.GetMoney());
+                Console.WriteLine("Money: ${0}", player.wallet.Cash);
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
                 //store
-                store = new Store();
+                store = new Store(player);
                 store.DisplayStoreOptions();
                 store.GetPurchasedItem();
                 //recipe and set price
