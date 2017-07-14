@@ -22,6 +22,7 @@ namespace LemonadeStand
                 price = value;
             }
         }
+
         public static string Name
         {
             get

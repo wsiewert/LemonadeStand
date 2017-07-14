@@ -8,6 +8,22 @@ namespace LemonadeStand
 {
     class Customer
     {
+        public Customer(Random random)
+        {
+            
+        }
 
+        public void GeneratePricePreference()
+        {
+            //Price
+        }
+        public void GenerateWeatherPreference()
+        {
+            //Weather
+        }
+        public void GenerateTemperaturePreference()
+        {
+            //Temperature
+        }
     }
 }

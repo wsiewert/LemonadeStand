@@ -29,6 +29,8 @@ namespace LemonadeStand
             switch (userInput)
             {
                 case "1":
+                    //call add item
+                    //call wallet price drop
                     break;
                 case "2":
                     break;

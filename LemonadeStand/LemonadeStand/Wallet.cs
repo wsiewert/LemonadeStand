@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LemonadeStand
+{
+    class Wallet
+    {
+        decimal cash;
+
+        public Wallet()
+        {
+            cash = 20;
+        }
+
+        public decimal Cash
+        {
+            get
+            {
+                return cash;
+            }
+        }
+
+        public void AddCash(decimal amount)
+        {
+            cash += amount;
+        }
+
+        public void SubtractCash(decimal amount)
+        {
+            if (amount > cash)
+            {
+                Console.WriteLine("Insufficient Funds!");
+            }
+            else
+            {
+                cash -= amount;
+            }
+        }
+    }
+}

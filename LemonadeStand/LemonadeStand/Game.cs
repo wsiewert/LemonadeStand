@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         UserInterface userInterface = new UserInterface();
         Random random = new Random();
+        Store store;
         Player player1;
         int dayCounter;
         int daysToPlay;
@@ -41,7 +42,7 @@ namespace LemonadeStand
                 Console.WriteLine("Money: {0}", player1.GetMoney());
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
                 //store
-                Store store = new Store();
+                store = new Store();
                 store.DisplayStoreOptions();
                 store.GetPurchasedItem();
                 //recipe and set price
