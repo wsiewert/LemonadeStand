@@ -8,17 +8,30 @@ namespace LemonadeStand
 {
     abstract class Item
     {
-        protected decimal price;
-        protected string name;
+        protected static decimal price;
+        protected static string name;
 
-        public decimal GetPrice()
+        public static decimal Price
         {
-            return price;
+            get
+            {
+                return price;
+            }
+            set
+            {
+                price = value;
+            }
         }
-
-        public string GetName()
+        public static string Name
         {
-            return name;
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
         }
     }
 }

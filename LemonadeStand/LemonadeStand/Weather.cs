@@ -20,7 +20,7 @@ namespace LemonadeStand
             GenerateForecast(weatherType,random);
             GenerateActualWeather(weatherType,random);
         }
-
+        
         public int GetForecastTemperature()
         {
             return forecastTemperature;

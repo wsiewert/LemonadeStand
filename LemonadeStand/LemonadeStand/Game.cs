@@ -41,6 +41,9 @@ namespace LemonadeStand
                 Console.WriteLine("Money: {0}", player1.GetMoney());
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
                 //store
+                Store store = new Store();
+                store.DisplayStoreOptions();
+                store.GetPurchasedItem();
                 //recipe and set price
                 //day.start day
                 //show results

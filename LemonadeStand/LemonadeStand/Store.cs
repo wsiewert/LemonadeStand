@@ -8,31 +8,24 @@ namespace LemonadeStand
 {
     class Store
     {
-        Lemon lemon;
-        Sugar sugar;
-        Ice ice;
-        Cup cup;
-        string userInput;
 
         public Store()
         {
-            lemon = new Lemon();
-            sugar = new Sugar();
-            ice = new Ice();
-            cup = new Cup();
+
         }
 
         public void DisplayStoreOptions()
         {
             Console.WriteLine("Please Purchase what you need:");
-            Console.WriteLine("1 - Cup (x10)");
-            Console.WriteLine("2 - Sugar (x10)");
-            Console.WriteLine("3 - Lemon (x10)");
-            Console.WriteLine("4 - Ice (x10)");
+            Console.WriteLine("1 - Cup (x10) - {0}", Cup.Price);
+            Console.WriteLine("2 - Sugar (x10) - {0}", Sugar.Price);
+            Console.WriteLine("3 - Lemon (x10) - {0}", Lemon.Price);
+            Console.WriteLine("4 - Ice (x10) - {0}", Ice.Price);
         }
 
         public void GetPurchasedItem()
         {
+            string userInput = Console.ReadLine();
             switch (userInput)
             {
                 case "1":
@@ -48,11 +41,6 @@ namespace LemonadeStand
                     GetPurchasedItem();
                     break;
             }
-        }
-
-        public void GetUserInput()
-        {
-            userInput = Console.ReadLine();
         }
     }
 }
