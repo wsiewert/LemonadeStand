@@ -31,16 +31,17 @@ namespace LemonadeStand
             GetDaysToPlay();
 
 
-            while (dayCounter <= 7)
+            while (dayCounter <= daysToPlay)
             {
                 Day day = new Day(random);
+                //display stats
                 Console.WriteLine("");
+                Console.WriteLine("===================================");
                 Console.WriteLine("Day: {0}", dayCounter);
                 Console.WriteLine("Money: {0}", player1.GetMoney());
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
-                //get weather from day
-                //store 
-                //recipe
+                //store
+                //recipe and set price
                 //day.start day
                 //show results
                 dayCounter++;
@@ -52,17 +53,23 @@ namespace LemonadeStand
 
         public void GetDaysToPlay()
         {
-            Console.WriteLine("How many days would you like to play?");
-            int userInput = int.Parse(Console.ReadLine());
-
-            if (userInput < 7)
+            try
             {
-                Console.WriteLine("You must choose at least 7 days to play!");
-                GetDaysToPlay();
+                Console.WriteLine("How many days would you like to play?");
+                int userInput = int.Parse(Console.ReadLine());
+                if (userInput < 7)
+                {
+                    Console.WriteLine("Please enter at least 7 days");
+                }
+                else
+                {
+                    daysToPlay = userInput;
+                }
             }
-            else
+            catch (Exception)
             {
-                daysToPlay = userInput;
+                Console.WriteLine("Please enter a number!");
+                GetDaysToPlay();
             }
         }
     }
