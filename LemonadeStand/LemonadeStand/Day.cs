@@ -9,7 +9,7 @@ namespace LemonadeStand
     class Day
     {
         List<string> weatherType = new List<string>() { "rain", "sunny", "cloudy" };
-        Weather weather;
+        public Weather weather;
 
         public Day(Random random)
         {
@@ -19,11 +19,6 @@ namespace LemonadeStand
         public void StartDay()
         {
             
-        }
-
-        public int GetForecastTemperature()
-        {
-           return weather.GetForecastTemperature();
         }
     }
 }
