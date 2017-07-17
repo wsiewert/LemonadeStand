@@ -28,16 +28,15 @@ namespace LemonadeStand
             cash += amount;
         }
 
-        public void SubtractCash(decimal amount)
+        public bool SubtractCash(decimal amount)
         {
             if (amount > cash)
             {
                 Console.WriteLine("Insufficient Funds!");
+                return false;
             }
-            else
-            {
-                cash -= amount;
-            }
+            cash -= amount;
+            return true;
         }
     }
 }

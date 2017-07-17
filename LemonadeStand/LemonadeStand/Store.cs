@@ -8,6 +8,10 @@ namespace LemonadeStand
 {
     class Store
     {
+        decimal cupPrice = 1;
+        decimal sugarPrice = 1;
+        decimal lemonPrice = 1;
+        decimal icePrice = 1;
         Wallet playerWallet;
         Inventory playerInventory;
 
@@ -20,10 +24,10 @@ namespace LemonadeStand
         public void DisplayStoreOptions()
         {
             Console.WriteLine("Please Purchase what you need:");
-            Console.WriteLine("1 - Cup (x10) - ${0}", Cup.Price);
-            Console.WriteLine("2 - Sugar (x10) -${0}", Sugar.Price);
-            Console.WriteLine("3 - Lemon (x10) - ${0}", Lemon.Price);
-            Console.WriteLine("4 - Ice (x10) - ${0}", Ice.Price);
+            Console.WriteLine("1 - Cup (x10) - ${0}", cupPrice);
+            Console.WriteLine("2 - Sugar (x10) -${0}", sugarPrice);
+            Console.WriteLine("3 - Lemon (x10) - ${0}", lemonPrice);
+            Console.WriteLine("4 - Ice (x10) - ${0}", icePrice);
         }
 
         public void GetPurchasedItem()
@@ -32,11 +36,7 @@ namespace LemonadeStand
             switch (userInput)
             {
                 case "1":
-                    //call add item
-                    playerInventory.AddItem("cup", 10);
-                    //call wallet price drop
-                    playerWallet.SubtractCash(Cup.Price);
-                    Console.WriteLine("***Yay you purchased something***");
+                    PurchaseCup();
                     break;
                 case "2":
                     break;
@@ -48,6 +48,16 @@ namespace LemonadeStand
                     Console.WriteLine("Not A Command!");
                     GetPurchasedItem();
                     break;
+            }
+        }
+
+        public void PurchaseCup()
+        {
+            bool fundsInWallet = playerWallet.SubtractCash(cupPrice);
+            if (fundsInWallet)
+            {
+                playerInventory.AddItem("cup", 10);
+                Console.WriteLine("Purchased Cup, Total: {0}", playerInventory.GetInventoryQuantity("cup"));
             }
         }
     }

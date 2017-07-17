@@ -11,7 +11,6 @@ namespace LemonadeStand
         public Cup()
         {
             name = "cup";
-            price = 1;
         }
     }
 }

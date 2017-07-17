@@ -29,6 +29,7 @@ namespace LemonadeStand
             player.SetName();
             Console.WriteLine(player.GetName());
 
+            store = new Store(player);
 
             GetDaysToPlay();
 
@@ -43,7 +44,7 @@ namespace LemonadeStand
                 Console.WriteLine("Money: ${0}", player.wallet.Cash);
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
                 //store
-                store = new Store(player);
+                
                 store.DisplayStoreOptions();
                 store.GetPurchasedItem();
                 //recipe and set price

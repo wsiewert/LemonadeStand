@@ -11,7 +11,6 @@ namespace LemonadeStand
         public Ice()
         {
             name = "ice";
-            price = 1;
         }
     }
 }
