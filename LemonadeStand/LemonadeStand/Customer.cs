@@ -11,17 +11,20 @@ namespace LemonadeStand
         Inventory inventory;
         Recipe recipe;
         Random random;
+        Weather weather;
 
-        public Customer(Random random, Recipe recipe, Inventory inventory)
+        public Customer(Random random, Recipe recipe, Inventory inventory, Weather weather)
         {
             this.inventory = inventory;
             this.recipe = recipe;
             this.random = random;
+            this.weather = weather;
         }
 
-        public void GeneratePricePreference()
+        public decimal GeneratePricePreference()
         {
-            //Price
+            //price
+            return 1;
         }
         public void GenerateWeatherPreference()
         {
@@ -30,6 +33,7 @@ namespace LemonadeStand
         public void GenerateTemperaturePreference()
         {
             //Temperature
+            int preferredTemperature = random.Next(weather.TemperatureRangeMin, weather.TemperatureRangeMax+1); 
         }
 
         public bool PurchaseLemonade()

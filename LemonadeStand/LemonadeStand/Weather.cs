@@ -15,6 +15,16 @@ namespace LemonadeStand
         int temperatureRangeMin = 50;
         int temperatureRangeMax = 95;
 
+        public int TemperatureRangeMin
+        {
+            get { return temperatureRangeMin; }
+        }
+
+        public int TemperatureRangeMax
+        {
+            get { return temperatureRangeMax; }
+        }
+
         public Weather(List<string> weatherType, Random random)
         {
             GenerateForecast(weatherType,random);

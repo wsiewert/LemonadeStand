@@ -9,17 +9,23 @@ namespace LemonadeStand
     class Day
     {
         List<string> weatherType = new List<string>() { "rain", "sunny", "cloudy" };
-        Weather weather;
+        public Weather weather;
         Player player;
         Store store;
         Recipe recipe;
+        Random random;
+        decimal income;
+        int customers;
+
 
         public Day(Random random, Player player)
         {
             weather = new Weather(weatherType, random);
             recipe = new Recipe();
             this.player = player;
+            this.random = random;
             store = new Store(this.player);
+            customers = 100;
         }
 
         public void StartDay()
@@ -44,6 +50,14 @@ namespace LemonadeStand
             while (exitRecipe == false)
             {
                 exitRecipe = recipe.SetRecipe();
+            }
+        }
+
+        public void CreateCustomer()
+        {
+            for (int i = 0; i < customers; i++)
+            {
+                Customer customer = new Customer(random, recipe, player.inventory, weather);
             }
         }
     }

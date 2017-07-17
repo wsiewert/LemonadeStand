@@ -68,7 +68,7 @@ namespace LemonadeStand
             Console.WriteLine("1 - Lemon [{0}]",lemonQuantity);
             Console.WriteLine("2 - Sugar [{0}]",sugarQuantity);
             Console.WriteLine("3 - Ice [{0}]",iceQuantity);
-            Console.WriteLine("4 - Price [{0}]",price);
+            Console.WriteLine("4 - Price [${0}]",price);
             Console.WriteLine("5 - Exit");
         }
 

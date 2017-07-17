@@ -42,21 +42,21 @@ namespace LemonadeStand
             }
         }
 
-        public void RemoveItem(string itemName)
+        public void RemoveItem(string itemName, int quantity)
         {
             switch (itemName)
             {
                 case "sugar":
-                    sugarInventory.RemoveAt(0);
+                    sugarInventory.RemoveRange(0,quantity);
                     break;
                 case "lemon":
-                    lemonInventory.RemoveAt(0);
+                    lemonInventory.RemoveRange(0, quantity);
                     break;
                 case "cup":
-                    cupInventory.RemoveAt(0);
+                    cupInventory.RemoveRange(0, quantity);
                     break;
                 case "ice":
-                    iceInventory.RemoveAt(0);
+                    iceInventory.RemoveRange(0, quantity);
                     break;
                 default:
                     break;
