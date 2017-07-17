@@ -29,8 +29,6 @@ namespace LemonadeStand
             player.SetName();
             Console.WriteLine(player.GetName());
 
-            store = new Store(player);
-
             GetDaysToPlay();
 
 
@@ -43,10 +41,17 @@ namespace LemonadeStand
                 Console.WriteLine("Day: {0}", dayCounter);
                 Console.WriteLine("Money: ${0}", player.wallet.Cash);
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
+                Console.WriteLine("Cups: {0} Sugar: {1} Lemon: {2} Ice: {3}", player.inventory.GetInventoryQuantity("cup"), player.inventory.GetInventoryQuantity("sugar"), player.inventory.GetInventoryQuantity("lemon"), player.inventory.GetInventoryQuantity("ice"));
+
                 //store
-                
-                store.DisplayStoreOptions();
-                store.GetPurchasedItem();
+                store = new Store(player);
+                bool exit = false;
+                while (exit == false)
+                {
+                    store.DisplayStoreOptions();
+                    exit = store.GetPurchasedItem();
+                }
+
                 //recipe and set price
                 //day.start day
                 //show results
