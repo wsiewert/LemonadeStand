@@ -6,40 +6,30 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Customer
+    class Lemonade
     {
-        Inventory inventory;
+        decimal price;
         Recipe recipe;
-        Random random;
+        Inventory inventory;
 
-        public Customer(Random random, Recipe recipe, Inventory inventory)
+        public decimal Price
         {
-            this.inventory = inventory;
+            get { return price; }
+            set { price = value; }
+        }
+
+        public Lemonade(Recipe recipe, Inventory inventory)
+        {
+            price = 0.25m;
             this.recipe = recipe;
-            this.random = random;
-        }
-
-        public void GeneratePricePreference()
-        {
-            //Price
-        }
-        public void GenerateWeatherPreference()
-        {
-            //Weather
-        }
-        public void GenerateTemperaturePreference()
-        {
-            //Temperature
+            this.inventory = inventory;
         }
 
         public bool PurchaseLemonade()
         {
-            if (CheckInventory())
-            {
-                Console.WriteLine("Lemonade Was Purchased");
-                return true;
-            }
-            return false;
+            
+            Console.WriteLine("Lemonade Was Purchased");
+            return true;
         }
 
         public bool CheckInventory()

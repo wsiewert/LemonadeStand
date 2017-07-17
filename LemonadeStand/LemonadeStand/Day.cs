@@ -9,7 +9,7 @@ namespace LemonadeStand
     class Day
     {
         List<string> weatherType = new List<string>() { "rain", "sunny", "cloudy" };
-        public Weather weather;
+        Weather weather;
         Player player;
         Store store;
         Recipe recipe;
