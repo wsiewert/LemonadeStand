@@ -12,28 +12,61 @@ namespace LemonadeStand
         Recipe recipe;
         Random random;
         Weather weather;
+        List<string> weatherType;
+        double maxValue = 1;
+        double minValue = 0.01;
+        double pricePreferenceTolerance = 0.05;
 
-        public Customer(Random random, Recipe recipe, Inventory inventory, Weather weather)
+        public Customer(Random random, Recipe recipe, Inventory inventory, Weather weather, List<string> weatherType)
         {
             this.inventory = inventory;
             this.recipe = recipe;
             this.random = random;
             this.weather = weather;
+            this.weatherType = weatherType;
         }
 
-        public decimal GeneratePricePreference()
+        public double GeneratePricePreference()
         {
-            //price
-            return 1;
+            double randomNumber = random.NextDouble();
+            double highestPrice = minValue + (randomNumber * (maxValue - minValue));
+            return Math.Round(highestPrice,2);
         }
-        public void GenerateWeatherPreference()
+        public string GenerateWeatherPreference()
         {
-            //Weather
+            int index = random.Next(0,weatherType.Count);
+            string preferredWeather = weatherType[index];
+            return preferredWeather;
         }
-        public void GenerateTemperaturePreference()
+        public int GenerateTemperaturePreference()
         {
-            //Temperature
-            int preferredTemperature = random.Next(weather.TemperatureRangeMin, weather.TemperatureRangeMax+1); 
+            int preferredTemperature = random.Next(weather.TemperatureRangeMin, weather.TemperatureRangeMax+1);
+            return preferredTemperature;
+        }
+
+        public bool ComparePricePreference()
+        {
+            //compare price pref to actual
+            return false;
+        }
+
+        public bool CompareWeatherPreference()
+        {
+            //compare weather preference to actual
+            return false;
+        }
+
+        public bool CopareTemperaturePreference()
+        {
+            //compare temperature pref to actual
+            return false;
+        }
+
+        public void GetCustomerDecision()
+        {
+            //compare preferences to actual
+            //if true, then purchase lemonade
+            //if false, then continue on.
         }
 
         public bool PurchaseLemonade()
