@@ -54,6 +54,8 @@ namespace LemonadeStand
 
                 //recipe and set price
                 //day.start day
+                day.StartDay();
+
                 //show results
                 dayCounter++;
             }

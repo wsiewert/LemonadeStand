@@ -10,14 +10,21 @@ namespace LemonadeStand
     {
         List<string> weatherType = new List<string>() { "rain", "sunny", "cloudy" };
         public Weather weather;
+        Recipe recipe;
 
         public Day(Random random)
         {
             weather = new Weather(weatherType, random);
+            recipe = new Recipe();
         }
 
         public void StartDay()
         {
+            bool exitRecipe = false;
+            while (exitRecipe == false)
+            {
+                exitRecipe = recipe.SetRecipe();
+            }
             
         }
     }
