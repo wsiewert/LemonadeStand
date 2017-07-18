@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     class Customer
     {
-        Inventory inventory;
+        Player player;
         Recipe recipe;
         Random random;
         Weather weather;
@@ -21,14 +21,14 @@ namespace LemonadeStand
         int temperaturePreference;
         int minimumPassingPreferences = 2;
 
-        public Customer(Random random, Recipe recipe, Inventory inventory, Weather weather, List<string> weatherType)
+        public Customer(Random random, Recipe recipe, Player player, Weather weather, List<string> weatherType)
         {
-            this.inventory = inventory;
+            this.player = player;
             this.recipe = recipe;
             this.random = random;
             this.weather = weather;
             this.weatherType = weatherType;
-
+            
             pricePreference = GeneratePricePreference();
             weatherPreference = GenerateWeatherPreference();
             temperaturePreference = GenerateTemperaturePreference();
@@ -118,11 +118,13 @@ namespace LemonadeStand
             if (CheckInventory())
             {
                 //1. subract lemonade resources
-                inventory.RemoveItem("sugar",recipe.SugarQuantity);
-                inventory.RemoveItem("lemon", recipe.SugarQuantity);
-                inventory.RemoveItem("ice", recipe.SugarQuantity);
-                inventory.RemoveItem("cup", recipe.SugarQuantity);
+                player.inventory.RemoveItem("sugar",recipe.SugarQuantity);
+                player.inventory.RemoveItem("lemon", recipe.SugarQuantity);
+                player.inventory.RemoveItem("ice", recipe.SugarQuantity);
+                player.inventory.RemoveItem("cup", recipe.SugarQuantity);
                 //2. add cash to wallet
+                player.wallet.AddCash(recipe.Price);
+
                 Console.WriteLine("Lemonade Was Purchased");
                 return true;
             }
@@ -131,10 +133,10 @@ namespace LemonadeStand
 
         public bool CheckInventory()
         {
-            int sugarInventory = inventory.GetInventoryQuantity("sugar");
-            int lemonInventory = inventory.GetInventoryQuantity("lemon");
-            int iceInventory = inventory.GetInventoryQuantity("ice");
-            int cupInventory = inventory.GetInventoryQuantity("cup");
+            int sugarInventory = player.inventory.GetInventoryQuantity("sugar");
+            int lemonInventory = player.inventory.GetInventoryQuantity("lemon");
+            int iceInventory = player.inventory.GetInventoryQuantity("ice");
+            int cupInventory = player.inventory.GetInventoryQuantity("cup");
 
             if (recipe.SugarQuantity > sugarInventory || recipe.LemonQuantity > lemonInventory || recipe.IceQuantity > iceInventory || 1 > cupInventory)
             {

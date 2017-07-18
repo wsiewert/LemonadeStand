@@ -11,7 +11,6 @@ namespace LemonadeStand
         UserInterface userInterface = new UserInterface();
         Random random = new Random();
         Player player;
-        Store store;
         Day day;
         int dayCounter;
         int daysToPlay;
@@ -43,13 +42,14 @@ namespace LemonadeStand
                 Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
                 Console.WriteLine("Cups: {0} Sugar: {1} Lemon: {2} Ice: {3}", player.inventory.GetInventoryQuantity("cup"), player.inventory.GetInventoryQuantity("sugar"), player.inventory.GetInventoryQuantity("lemon"), player.inventory.GetInventoryQuantity("ice"));
 
-                //recipe and set price
-                //day.start day
                 day.StartDay();
 
-                //show results
+                //show Daily results
+
                 dayCounter++;
             }
+
+            //Show End Game Results
 
             Console.WriteLine("press any key to continue...");
             Console.ReadLine();

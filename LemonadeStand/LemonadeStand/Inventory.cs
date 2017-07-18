@@ -8,10 +8,10 @@ namespace LemonadeStand
 {
     class Inventory
     {
-        List<object> sugarInventory = new List<object>() { };
-        List<object> lemonInventory = new List<object>() { };
-        List<object> cupInventory = new List<object>() { };
-        List<object> iceInventory = new List<object>() { };
+        List<Sugar> sugarInventory = new List<Sugar>() { };
+        List<Lemon> lemonInventory = new List<Lemon>() { };
+        List<Cup> cupInventory = new List<Cup>() { };
+        List<Ice> iceInventory = new List<Ice>() { };
 
         public Inventory()
         {

@@ -62,7 +62,7 @@ namespace LemonadeStand
         {
             for (int i = 0; i < customers; i++)
             {
-                Customer customer = new Customer(random, recipe, player.inventory, weather, weatherType);
+                Customer customer = new Customer(random, recipe, player, weather, weatherType);
             }
         }
     }
