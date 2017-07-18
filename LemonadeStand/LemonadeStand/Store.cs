@@ -15,20 +15,15 @@ namespace LemonadeStand
         Wallet playerWallet;
         Inventory playerInventory;
 
+        public decimal CupPrice { get { return cupPrice; } }
+        public decimal SugarPrice { get { return sugarPrice; } }
+        public decimal LemonPrice { get { return lemonPrice; } }
+        public decimal IcePrice { get { return icePrice; } }
+
         public Store(Player player)
         {
             playerWallet = player.wallet;
             playerInventory = player.inventory;
-        }
-
-        public void DisplayStoreOptions()
-        {
-            Console.WriteLine("[Store] Select to purchase:");
-            Console.WriteLine("1 - Cup - ${0}", cupPrice);
-            Console.WriteLine("2 - Sugar - ${0}", sugarPrice);
-            Console.WriteLine("3 - Lemon - ${0}", lemonPrice);
-            Console.WriteLine("4 - Ice - ${0}", icePrice);
-            Console.WriteLine("5 - Exit Store");
         }
 
         public int GetPurchaseQuantity()

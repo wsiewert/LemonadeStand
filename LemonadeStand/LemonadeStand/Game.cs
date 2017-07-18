@@ -8,10 +8,8 @@ namespace LemonadeStand
 {
     class Game
     {
-        UserInterface userInterface = new UserInterface();
         Random random = new Random();
         Player player;
-        Day day;
         int dayCounter;
         int daysToPlay;
         
@@ -23,7 +21,7 @@ namespace LemonadeStand
         public void StartGame()
         {
             dayCounter = 1;
-            userInterface.DisplayRules();
+            UserInterface.DisplayRules();
             player = new Player();
             player.SetName();
             Console.WriteLine(player.GetName());
@@ -33,7 +31,7 @@ namespace LemonadeStand
 
             while (dayCounter <= daysToPlay)
             {
-                day = new Day(random,player);
+                Day day = new Day(random,player);
                 //display stats
                 Console.WriteLine("");
                 Console.WriteLine("===================================");

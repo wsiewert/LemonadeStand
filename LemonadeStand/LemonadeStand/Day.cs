@@ -15,7 +15,7 @@ namespace LemonadeStand
         Recipe recipe;
         Random random;
         decimal income;
-        int customers = 10;
+        int customers = 100;
 
 
         public Day(Random random, Player player)
@@ -35,7 +35,6 @@ namespace LemonadeStand
             Console.WriteLine("Press Enter to Start the Day...");
             Console.ReadLine();
 
-            //add 100 customers using a for loop
             CreateCustomers();
         }
 
@@ -44,7 +43,7 @@ namespace LemonadeStand
             bool exit = false;
             while (exit == false)
             {
-                store.DisplayStoreOptions();
+                UserInterface.DisplayStoreOptions(store.CupPrice,store.SugarPrice,store.LemonPrice,store.IcePrice);
                 exit = store.GetPurchasedItem();
             }
         }
