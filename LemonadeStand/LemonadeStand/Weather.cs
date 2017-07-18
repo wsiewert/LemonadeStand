@@ -25,6 +25,16 @@ namespace LemonadeStand
             get { return temperatureRangeMax; }
         }
 
+        public string ActualWeather
+        {
+            get { return actualWeather; }
+        }
+
+        public int ActualTemperature
+        {
+            get { return actualTemperature; }
+        }
+
         public Weather(List<string> weatherType, Random random)
         {
             GenerateForecast(weatherType,random);

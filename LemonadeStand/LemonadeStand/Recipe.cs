@@ -28,6 +28,11 @@ namespace LemonadeStand
             get { return iceQuantity; }
         }
 
+        public decimal Price
+        {
+            get { return price; }
+        }
+
         public Recipe()
         {
             lemonQuantity = 3;

@@ -15,7 +15,11 @@ namespace LemonadeStand
         List<string> weatherType;
         double maxValue = 1;
         double minValue = 0.01;
-        double pricePreferenceTolerance = 0.05;
+        int temperaturePreferenceTolerance = 10;
+        decimal pricePreference;
+        string weatherPreference;
+        int temperaturePreference;
+        int minimumPassingPreferences = 2;
 
         public Customer(Random random, Recipe recipe, Inventory inventory, Weather weather, List<string> weatherType)
         {
@@ -24,13 +28,22 @@ namespace LemonadeStand
             this.random = random;
             this.weather = weather;
             this.weatherType = weatherType;
+
+            pricePreference = GeneratePricePreference();
+            weatherPreference = GenerateWeatherPreference();
+            temperaturePreference = GenerateTemperaturePreference();
+
+            if (GetCustomerDecision(CreatePreferenceList()))
+            {
+                PurchaseLemonade();
+            } 
         }
 
-        public double GeneratePricePreference()
+        public decimal GeneratePricePreference()
         {
             double randomNumber = random.NextDouble();
             double highestPrice = minValue + (randomNumber * (maxValue - minValue));
-            return Math.Round(highestPrice,2);
+            return Convert.ToDecimal(Math.Round(highestPrice,2));
         }
         public string GenerateWeatherPreference()
         {
@@ -46,33 +59,65 @@ namespace LemonadeStand
 
         public bool ComparePricePreference()
         {
-            //compare price pref to actual
-            return false;
+            if (recipe.Price > pricePreference)
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool CompareWeatherPreference()
         {
-            //compare weather preference to actual
+            if (weather.ActualWeather == weatherPreference)
+            {
+                return true;
+            }
             return false;
         }
 
-        public bool CopareTemperaturePreference()
+        public bool CompareTemperaturePreference()
         {
-            //compare temperature pref to actual
+            int minRange = temperaturePreference - temperaturePreferenceTolerance;
+            int maxRange = temperaturePreference + temperaturePreferenceTolerance;
+            if (weather.ActualTemperature <= (maxRange) && weather.ActualTemperature >= (minRange))
+            {
+                return true;
+            }
             return false;
         }
 
-        public void GetCustomerDecision()
+        public bool GetCustomerDecision(List<bool> preferenceList)
         {
-            //compare preferences to actual
-            //if true, then purchase lemonade
-            //if false, then continue on.
+            if (preferenceList.Count >= minimumPassingPreferences)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public List<bool> CreatePreferenceList()
+        {
+            List<bool> preferenceList = new List<bool>();
+            if (CompareTemperaturePreference())
+            {
+                preferenceList.Add(true);
+            }
+            if (CompareWeatherPreference())
+            {
+                preferenceList.Add(true);
+            }
+            if (ComparePricePreference())
+            {
+                preferenceList.Add(true);
+            }
+            return preferenceList;
         }
 
         public bool PurchaseLemonade()
         {
             if (CheckInventory())
             {
+                //call get lemonade on player inventory
                 Console.WriteLine("Lemonade Was Purchased");
                 return true;
             }

@@ -32,6 +32,7 @@ namespace LemonadeStand
         {
             GetStoreMenu();
             GetRecipeMenu();
+            //add 100 customers using a for loop
         }
 
         public void GetStoreMenu()
