@@ -15,7 +15,7 @@ namespace LemonadeStand
         Recipe recipe;
         Random random;
         decimal income;
-        int customers;
+        int customers = 10;
 
 
         public Day(Random random, Player player)
@@ -25,14 +25,18 @@ namespace LemonadeStand
             this.player = player;
             this.random = random;
             store = new Store(this.player);
-            customers = 100;
         }
 
         public void StartDay()
         {
             GetStoreMenu();
             GetRecipeMenu();
+
+            Console.WriteLine("Press Enter to Start the Day...");
+            Console.ReadLine();
+
             //add 100 customers using a for loop
+            CreateCustomers();
         }
 
         public void GetStoreMenu()
@@ -54,7 +58,7 @@ namespace LemonadeStand
             }
         }
 
-        public void CreateCustomer()
+        public void CreateCustomers()
         {
             for (int i = 0; i < customers; i++)
             {

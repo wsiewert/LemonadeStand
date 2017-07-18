@@ -117,7 +117,12 @@ namespace LemonadeStand
         {
             if (CheckInventory())
             {
-                //call get lemonade on player inventory
+                //1. subract lemonade resources
+                inventory.RemoveItem("sugar",recipe.SugarQuantity);
+                inventory.RemoveItem("lemon", recipe.SugarQuantity);
+                inventory.RemoveItem("ice", recipe.SugarQuantity);
+                inventory.RemoveItem("cup", recipe.SugarQuantity);
+                //2. add cash to wallet
                 Console.WriteLine("Lemonade Was Purchased");
                 return true;
             }

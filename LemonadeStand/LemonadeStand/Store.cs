@@ -8,10 +8,10 @@ namespace LemonadeStand
 {
     class Store
     {
-        decimal cupPrice = 1;
-        decimal sugarPrice = 1;
-        decimal lemonPrice = 1;
-        decimal icePrice = 1;
+        decimal cupPrice = 0.05m;
+        decimal sugarPrice = 0.05m;
+        decimal lemonPrice = 0.05m;
+        decimal icePrice = 0.05m;
         Wallet playerWallet;
         Inventory playerInventory;
 
