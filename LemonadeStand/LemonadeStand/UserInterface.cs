@@ -97,12 +97,12 @@ namespace LemonadeStand
             Console.WriteLine("] ");
         }
 
-        static public void DisplayEndDayStats()
+        static public void DisplayEndDayStats(int purchasesMade, int totalCustomers, Weather weather, decimal totalDayProfit)
         {
-            //actual weather
-            //total sales
-            //total customers
-            //total profit (+$1000)
+            DisplayWeatherActual(weather.ActualTemperature, weather.ActualWeather);
+            Console.WriteLine("Total Customers: {0}", totalCustomers);
+            Console.WriteLine("Total Sales: {0}",purchasesMade);
+            Console.WriteLine("Total Profit: +${0}",totalDayProfit);
             //inventory loss?
         }
 
@@ -116,6 +116,25 @@ namespace LemonadeStand
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("-NOT A COMMAND-");
             Console.ResetColor();
+        }
+
+        static public void DisplayInsufficientFunds()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("Insufficient Funds!");
+            Console.ResetColor();
+        }
+
+        static public void DisplayEnterANumber()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("Please Enter A Number!");
+            Console.ResetColor();
+        }
+
+        static public void DisplayEnterName()
+        {
+            Console.WriteLine("Please Enter Your Name:");
         }
     }
 }

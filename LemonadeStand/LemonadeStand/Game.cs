@@ -18,16 +18,19 @@ namespace LemonadeStand
             dayCounter = 1;
             UserInterface.DisplayRules();
             player = new Player();
+            UserInterface.DisplayEnterName();
             player.SetName();
-            Console.WriteLine(player.GetName());
-
             GetDaysToPlay();
+            PlayGame();
+        }
 
-
+        public void PlayGame()
+        {
+            Recipe recipe = new Recipe();
             while (dayCounter <= daysToPlay)
             {
-                Day day = new Day(random,player);
-                UserInterface.DisplayDailyStats(player.inventory,day.weather,player.wallet,dayCounter);
+                Day day = new Day(random, player, recipe);
+                UserInterface.DisplayDailyStats(player.inventory, day.weather, player.wallet, dayCounter);
                 day.StartDay();
 
                 //show Daily results
@@ -58,7 +61,7 @@ namespace LemonadeStand
             }
             catch (Exception)
             {
-                Console.WriteLine("Please enter a number!");
+                UserInterface.DisplayEnterANumber();
                 GetDaysToPlay();
             }
         }

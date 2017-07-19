@@ -61,7 +61,7 @@ namespace LemonadeStand
                 case "5":
                     return true;
                 default:
-                    Console.WriteLine("Not A Command!");
+                    UserInterface.DisplayNotACommand();
                     return GetPurchasedItem();
             }
         }

@@ -20,9 +20,13 @@ namespace LemonadeStand
         string weatherPreference;
         int temperaturePreference;
         int minimumPassingPreferences = 2;
+        bool customerPurchasedLemonade;
+
+        public bool CustomerPurchasedLemonade { get { return customerPurchasedLemonade; } }
 
         public Customer(Random random, Recipe recipe, Player player, Weather weather, List<string> weatherType)
         {
+            //ALL FUNCTIONALITY IN CONSTRUCTOR SHOULD BE HANDLED BY ANOTHER FUNCTION
             this.player = player;
             this.recipe = recipe;
             this.random = random;
@@ -35,7 +39,7 @@ namespace LemonadeStand
 
             if (GetCustomerDecision(CreatePreferenceList()))
             {
-                PurchaseLemonade();
+                customerPurchasedLemonade = PurchaseLemonade();
             } 
         }
 
@@ -117,6 +121,7 @@ namespace LemonadeStand
         {
             if (CheckInventory())
             {
+                //CUSTOMER SHOULD NOT BE TAKING DIRECTLY FROM INVENTORY
                 //1. subract lemonade resources
                 player.inventory.RemoveItem("sugar",recipe.SugarQuantity);
                 player.inventory.RemoveItem("lemon", recipe.SugarQuantity);
@@ -124,8 +129,6 @@ namespace LemonadeStand
                 player.inventory.RemoveItem("cup", recipe.SugarQuantity);
                 //2. add cash to wallet
                 player.wallet.AddCash(recipe.Price);
-
-                Console.WriteLine("Lemonade Was Purchased");
                 return true;
             }
             return false;
@@ -133,6 +136,7 @@ namespace LemonadeStand
 
         public bool CheckInventory()
         {
+            //INVENTORY SHOULD CHECK ITSELF, NOT CUSTOMER!
             int sugarInventory = player.inventory.GetInventoryQuantity("sugar");
             int lemonInventory = player.inventory.GetInventoryQuantity("lemon");
             int iceInventory = player.inventory.GetInventoryQuantity("ice");

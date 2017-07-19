@@ -32,7 +32,7 @@ namespace LemonadeStand
         {
             if (amount > cash)
             {
-                Console.WriteLine("Insufficient Funds!");
+                UserInterface.DisplayInsufficientFunds();
                 return false;
             }
             cash -= amount;

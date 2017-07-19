@@ -14,14 +14,15 @@ namespace LemonadeStand
         Store store;
         Recipe recipe;
         Random random;
-        decimal income;
+        decimal totalDayProfit;
+        int purchasesMade;
         int customers = 100;
 
 
-        public Day(Random random, Player player)
+        public Day(Random random, Player player, Recipe recipe)
         {
             weather = new Weather(weatherType, random);
-            recipe = new Recipe();
+            this.recipe = recipe;
             this.player = player;
             this.random = random;
             store = new Store(this.player);
@@ -31,9 +32,16 @@ namespace LemonadeStand
         {
             GetStoreMenu();
             GetRecipeMenu();
+            UserInterface.DisplayWeatherActual(weather.ActualTemperature,weather.ActualWeather);
             Console.WriteLine("Press Enter to Start the Day...");
             Console.ReadLine();
             CreateCustomers();
+            EndDay();
+        }
+
+        public void EndDay()
+        {
+            UserInterface.DisplayEndDayStats(purchasesMade,customers,weather,totalDayProfit);
         }
 
         public void GetStoreMenu()
@@ -61,6 +69,11 @@ namespace LemonadeStand
             for (int i = 0; i < customers; i++)
             {
                 Customer customer = new Customer(random, recipe, player, weather, weatherType);
+                if (customer.CustomerPurchasedLemonade)
+                {
+                    purchasesMade++;
+                    totalDayProfit += recipe.Price;
+                }
             }
         }
     }
