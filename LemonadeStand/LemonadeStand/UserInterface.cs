@@ -103,7 +103,12 @@ namespace LemonadeStand
             DisplayWeatherActual(weather.ActualTemperature, weather.ActualWeather);
             Console.WriteLine("Total Customers: {0}", totalCustomers);
             Console.WriteLine("Total Sales: {0}",purchasesMade);
-            Console.WriteLine("Total Profit: +${0}",totalDayProfit);
+            Console.WriteLine("Total Day Profit: ${0}",totalDayProfit);
+        }
+
+        static public void DisplayGameTotalProfit(decimal totalProfit)
+        {
+            Console.WriteLine("Total Game Profit: ${0}",totalProfit);
         }
 
         static public void DisplayEndGameStats()

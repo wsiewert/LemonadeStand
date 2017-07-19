@@ -26,12 +26,16 @@ namespace LemonadeStand
 
         public void PlayGame()
         {
+            decimal totalGameProfit;
+            decimal startingCash = player.wallet.Cash;
             Recipe recipe = new Recipe();
             while (dayCounter <= daysToPlay)
             {
                 Day day = new Day(random, player, recipe);
                 UserInterface.DisplayDailyStats(player.inventory, day.weather, player.wallet, dayCounter);
                 day.StartDay();
+                totalGameProfit = player.wallet.Cash - startingCash;
+                UserInterface.DisplayGameTotalProfit(totalGameProfit);
                 dayCounter++;
             }
 

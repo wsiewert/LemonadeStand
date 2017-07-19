@@ -13,7 +13,9 @@ namespace LemonadeStand
         Store store;
         Recipe recipe;
         Random random;
+        decimal startingCash;
         decimal totalDayProfit;
+        decimal profitFromPurchases;
         int purchasesMade;
         int customers = 100;
 
@@ -29,6 +31,7 @@ namespace LemonadeStand
 
         public void StartDay()
         {
+            startingCash = player.wallet.Cash;
             GetStoreMenu();
             GetRecipeMenu();
             Console.WriteLine("Press Enter to Start the Day...");
@@ -39,6 +42,7 @@ namespace LemonadeStand
 
         public void EndDay()
         {
+            totalDayProfit = player.wallet.Cash - startingCash;
             UserInterface.DisplayEndDayStats(purchasesMade,customers,weather,totalDayProfit);
         }
 
@@ -70,7 +74,7 @@ namespace LemonadeStand
                 if (customer.CustomerPurchasedLemonade)
                 {
                     purchasesMade++;
-                    totalDayProfit += recipe.Price;
+                    profitFromPurchases += recipe.Price;
                 }
             }
         }
