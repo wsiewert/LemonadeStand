@@ -8,7 +8,6 @@ namespace LemonadeStand
 {
     class Day
     {
-        List<string> weatherType = new List<string>() { "rainy", "sunny", "cloudy" };
         public Weather weather;
         Player player;
         Store store;
@@ -21,7 +20,7 @@ namespace LemonadeStand
 
         public Day(Random random, Player player, Recipe recipe)
         {
-            weather = new Weather(weatherType, random);
+            weather = new Weather(random);
             this.recipe = recipe;
             this.player = player;
             this.random = random;
@@ -32,7 +31,6 @@ namespace LemonadeStand
         {
             GetStoreMenu();
             GetRecipeMenu();
-            UserInterface.DisplayWeatherActual(weather.ActualTemperature,weather.ActualWeather);
             Console.WriteLine("Press Enter to Start the Day...");
             Console.ReadLine();
             CreateCustomers();
@@ -68,7 +66,7 @@ namespace LemonadeStand
         {
             for (int i = 0; i < customers; i++)
             {
-                Customer customer = new Customer(random, recipe, player, weather, weatherType);
+                Customer customer = new Customer(random, recipe, player, weather, weather.WeatherType);
                 if (customer.CustomerPurchasedLemonade)
                 {
                     purchasesMade++;

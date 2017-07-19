@@ -8,12 +8,19 @@ namespace LemonadeStand
 {
     class Weather
     {
+        List<string> weatherType = new List<string>() { "rainy", "sunny", "cloudy" };
         int forecastTemperature;
         string forecastWeather;
         int actualTemperature;
         string actualWeather;
         int temperatureRangeMin = 50;
         int temperatureRangeMax = 95;
+        int actualTemperatureFluctuation = 4;
+
+        public List<string> WeatherType
+        {
+            get { return weatherType; }
+        }
 
         public int TemperatureRangeMin
         {
@@ -35,10 +42,10 @@ namespace LemonadeStand
             get { return actualTemperature; }
         }
 
-        public Weather(List<string> weatherType, Random random)
+        public Weather(Random random)
         {
-            GenerateForecast(weatherType,random);
-            GenerateActualWeather(weatherType,random);
+            GenerateForecast(random);
+            GenerateActualWeather(random);
         }
         
         public int GetForecastTemperature()
@@ -61,17 +68,19 @@ namespace LemonadeStand
             return actualWeather;
         }
 
-        public void GenerateForecast(List<string> weatherType, Random random)
+        public void GenerateForecast(Random random)
         {
             int weatherTypeIndex = random.Next(0, weatherType.Count);
             forecastTemperature = random.Next(temperatureRangeMin,temperatureRangeMax);
             forecastWeather = weatherType[weatherTypeIndex];
         }
 
-        public void GenerateActualWeather(List<string> weatherType, Random random)
+        public void GenerateActualWeather(Random random)
         {
             int weatherTypeIndex = random.Next(0, weatherType.Count);
-            actualTemperature = random.Next(temperatureRangeMin, temperatureRangeMax);
+            int forecastTemperatureHigh = forecastTemperature + actualTemperatureFluctuation;
+            int forecastTemperatureLow = forecastTemperature - actualTemperatureFluctuation;
+            actualTemperature = random.Next(forecastTemperatureLow, forecastTemperatureHigh);
             actualWeather = weatherType[weatherTypeIndex];
         }
     }

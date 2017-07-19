@@ -99,11 +99,11 @@ namespace LemonadeStand
 
         static public void DisplayEndDayStats(int purchasesMade, int totalCustomers, Weather weather, decimal totalDayProfit)
         {
+            Console.WriteLine("[End Of Day Stats]");
             DisplayWeatherActual(weather.ActualTemperature, weather.ActualWeather);
             Console.WriteLine("Total Customers: {0}", totalCustomers);
             Console.WriteLine("Total Sales: {0}",purchasesMade);
             Console.WriteLine("Total Profit: +${0}",totalDayProfit);
-            //inventory loss?
         }
 
         static public void DisplayEndGameStats()

@@ -32,9 +32,6 @@ namespace LemonadeStand
                 Day day = new Day(random, player, recipe);
                 UserInterface.DisplayDailyStats(player.inventory, day.weather, player.wallet, dayCounter);
                 day.StartDay();
-
-                //show Daily results
-
                 dayCounter++;
             }
 
@@ -53,6 +50,7 @@ namespace LemonadeStand
                 if (userInput < 7)
                 {
                     Console.WriteLine("Please enter at least 7 days");
+                    GetDaysToPlay();
                 }
                 else
                 {
