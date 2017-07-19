@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,8 +40,20 @@ namespace LemonadeStand
                 dayCounter++;
             }
             UserInterface.DisplayEndGameStats(player.GetName(),totalGameProfit,startingCash, player.inventory);
-            Console.WriteLine("press any key to continue...");
+            Console.WriteLine("Press Enter to Submit HighScores and Quit.");
             Console.ReadLine();
+            SubmitHighScores(totalGameProfit);
+        }
+
+        public void SubmitHighScores(decimal totalGameProfit)
+        {
+            string connectionString = "server=DESKTOP-RSKE7OA;" + "database=LemonadeStand;" + "trusted_connection=true;";
+            SqlConnection conn = new SqlConnection(connectionString);
+            string sqlCommandString = "INSERT INTO HighScores(Player_Name, Total_Profit) VALUES ('"+ player.GetName() +"', '"+ totalGameProfit + "')";
+            conn.Open();
+            SqlCommand command = new SqlCommand(sqlCommandString,conn);
+            command.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void GetDaysToPlay()
