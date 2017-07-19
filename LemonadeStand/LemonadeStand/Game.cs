@@ -12,11 +12,6 @@ namespace LemonadeStand
         Player player;
         int dayCounter;
         int daysToPlay;
-        
-        public Game()
-        {
-
-        }
 
         public void StartGame()
         {
@@ -32,14 +27,7 @@ namespace LemonadeStand
             while (dayCounter <= daysToPlay)
             {
                 Day day = new Day(random,player);
-                //display stats
-                Console.WriteLine("");
-                Console.WriteLine("===================================");
-                Console.WriteLine("Day: {0}", dayCounter);
-                Console.WriteLine("Money: ${0}", player.wallet.Cash);
-                Console.WriteLine("Forecast: {0} And {1}", day.weather.GetForecastTemperature(), day.weather.GetForecastWeather());
-                Console.WriteLine("Cups: {0} Sugar: {1} Lemon: {2} Ice: {3}", player.inventory.GetInventoryQuantity("cup"), player.inventory.GetInventoryQuantity("sugar"), player.inventory.GetInventoryQuantity("lemon"), player.inventory.GetInventoryQuantity("ice"));
-
+                UserInterface.DisplayDailyStats(player.inventory,day.weather,player.wallet,dayCounter);
                 day.StartDay();
 
                 //show Daily results

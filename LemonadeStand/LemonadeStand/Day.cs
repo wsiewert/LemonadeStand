@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     class Day
     {
-        List<string> weatherType = new List<string>() { "rain", "sunny", "cloudy" };
+        List<string> weatherType = new List<string>() { "rainy", "sunny", "cloudy" };
         public Weather weather;
         Player player;
         Store store;
@@ -31,10 +31,8 @@ namespace LemonadeStand
         {
             GetStoreMenu();
             GetRecipeMenu();
-
             Console.WriteLine("Press Enter to Start the Day...");
             Console.ReadLine();
-
             CreateCustomers();
         }
 
@@ -43,7 +41,7 @@ namespace LemonadeStand
             bool exit = false;
             while (exit == false)
             {
-                UserInterface.DisplayStoreOptions(store.CupPrice,store.SugarPrice,store.LemonPrice,store.IcePrice);
+                UserInterface.DisplayStoreOptions(store.CupPrice, store.SugarPrice, store.LemonPrice, store.IcePrice);
                 exit = store.GetPurchasedItem();
             }
         }
@@ -53,6 +51,7 @@ namespace LemonadeStand
             bool exitRecipe = false;
             while (exitRecipe == false)
             {
+                UserInterface.DisplayRecipeOptions(recipe.LemonQuantity, recipe.SugarQuantity, recipe.IceQuantity, recipe.Price);
                 exitRecipe = recipe.SetRecipe();
             }
         }

@@ -8,10 +8,16 @@ namespace LemonadeStand
 {
     static class UserInterface
     {
-        static string tabSpace = "    ";
         static public void DisplayRules()
         {
-            Console.WriteLine("[RULES GO HERE]");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("[RULES]");
+            Console.WriteLine("You are owner of a local lemonade stand. To succeed, you must:");
+            Console.WriteLine(" - Purchase supplies");
+            Console.WriteLine(" - Adjust recipes and pricing");
+            Console.WriteLine(" - Predict the weather");
+            Console.WriteLine("Good luck!");
+            Console.ResetColor();
         }
 
         static public void DisplayWeatherForecast(int temperature, string weather)
@@ -19,14 +25,97 @@ namespace LemonadeStand
             Console.WriteLine("Forecast: {0} and {1}",temperature,weather);
         }
 
+        static public void DisplayWeatherActual(int temperature, string weather)
+        {
+            Console.WriteLine("Actual Weather: {0} and {1}", temperature, weather);
+        }
+
         static public void DisplayStoreOptions(decimal cupPrice, decimal sugarPrice, decimal lemonPrice, decimal icePrice)
         {
-            Console.WriteLine("[Store] Select to purchase:");
-            Console.WriteLine("1 - Cup - ${0}", cupPrice);
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Store");
+            Console.ResetColor();
+            Console.WriteLine("] Select to purchase:");
+            Console.WriteLine("1 - Cup - ${0}",cupPrice);
             Console.WriteLine("2 - Sugar - ${0}", sugarPrice);
             Console.WriteLine("3 - Lemon - ${0}", lemonPrice);
             Console.WriteLine("4 - Ice - ${0}", icePrice);
             Console.WriteLine("5 - Exit Store");
+        }
+
+        static public void DisplayRecipeOptions(int lemonQuantity, int sugarQuantity, int iceQuantity, decimal price)
+        {
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Recipe");
+            Console.ResetColor();
+            Console.WriteLine("] Select option to change:");
+            Console.WriteLine("1 - Lemon [{0}]", lemonQuantity);
+            Console.WriteLine("2 - Sugar [{0}]", sugarQuantity);
+            Console.WriteLine("3 - Ice [{0}]", iceQuantity);
+            Console.WriteLine("4 - Price [${0}]", price);
+            Console.WriteLine("5 - Exit");
+        }
+
+        static public void DisplayDailyStats(Inventory inventory, Weather weather, Wallet wallet, int dayCounter)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("===================================");
+            Console.WriteLine("Day: {0}", dayCounter);
+            Console.WriteLine("Money: ${0}", wallet.Cash);
+            DisplayWeatherForecast(weather.GetForecastTemperature(),weather.GetForecastWeather());
+            DisplayInventory(inventory);
+        }
+
+        static public void DisplayInventory(Inventory inventory)
+        {
+            Console.Write("Inventory: ");
+
+            Console.Write("Cups: [");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("{0}",inventory.GetInventoryQuantity("cup"));
+            Console.ResetColor();
+            Console.Write("] ");
+
+            Console.Write("Sugar: [");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("{0}", inventory.GetInventoryQuantity("sugar"));
+            Console.ResetColor();
+            Console.Write("] ");
+
+            Console.Write("Lemon: [");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("{0}", inventory.GetInventoryQuantity("lemon"));
+            Console.ResetColor();
+            Console.Write("] ");
+
+            Console.Write("Ice: [");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("{0}", inventory.GetInventoryQuantity("ice"));
+            Console.ResetColor();
+            Console.WriteLine("] ");
+        }
+
+        static public void DisplayEndDayStats()
+        {
+            //actual weather
+            //total sales
+            //total customers
+            //total profit (+$1000)
+            //inventory loss?
+        }
+
+        static public void DisplayEndGameStats()
+        {
+
+        }
+
+        static public void DisplayNotACommand()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("-NOT A COMMAND-");
+            Console.ResetColor();
         }
     }
 }

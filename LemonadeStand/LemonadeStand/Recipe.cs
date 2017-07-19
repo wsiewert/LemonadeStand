@@ -43,7 +43,6 @@ namespace LemonadeStand
 
         public bool SetRecipe()
         {
-            DisplayRecipeCommands();
             string userInput = Console.ReadLine();
             switch (userInput)
             {
