@@ -12,14 +12,7 @@ namespace LemonadeStand
 
         public static string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
+            get { return name; }
         }
     }
 }
