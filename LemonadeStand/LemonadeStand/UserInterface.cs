@@ -108,12 +108,56 @@ namespace LemonadeStand
 
         static public void DisplayGameTotalProfit(decimal totalProfit)
         {
-            Console.WriteLine("Total Game Profit: ${0}",totalProfit);
+            Console.Write("Total Game Profit: ");
+            if (totalProfit < 0)
+            {
+                DisplayColorProfitLoss("-$" + totalProfit * -1);
+                Console.WriteLine("");
+            }
+            else
+            {
+                DisplayColorProfitGain("+$" + totalProfit);
+                Console.WriteLine("");
+            }
         }
 
-        static public void DisplayEndGameStats()
+        static public void DisplayEndGameStats(string playerName, decimal totalGameProfit, decimal startingCash, Inventory inventory)
         {
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("[GAME OVER]");
+            Console.ResetColor();
+            Console.WriteLine("Player: {0}",playerName);
+            Console.Write("Total Game Profit: ");
+            if (totalGameProfit > startingCash)
+            {
+                DisplayColorProfitGain("+$" + totalGameProfit);
+                Console.WriteLine("");
+                Console.WriteLine("Congrats!");
+            }
+            else
+            {
+                DisplayColorProfitLoss("-$" + totalGameProfit*-1);
+                Console.WriteLine("");
+                Console.WriteLine("Better Luck Next Time!");
+            }
+            Console.WriteLine("Current Inventory:");
+            DisplayInventory(inventory);
+        }
 
+        static public void DisplayColorProfitGain(string profit)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(profit);
+            Console.ResetColor();
+        }
+
+        static public void DisplayColorProfitLoss(string profit)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(profit);
+            Console.ResetColor();
         }
 
         static public void DisplayNotACommand()

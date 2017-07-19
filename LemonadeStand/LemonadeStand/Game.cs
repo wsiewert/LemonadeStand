@@ -26,7 +26,7 @@ namespace LemonadeStand
 
         public void PlayGame()
         {
-            decimal totalGameProfit;
+            decimal totalGameProfit = 0;
             decimal startingCash = player.wallet.Cash;
             Recipe recipe = new Recipe();
             while (dayCounter <= daysToPlay)
@@ -38,9 +38,7 @@ namespace LemonadeStand
                 UserInterface.DisplayGameTotalProfit(totalGameProfit);
                 dayCounter++;
             }
-
-            //Show End Game Results
-
+            UserInterface.DisplayEndGameStats(player.GetName(),totalGameProfit,startingCash, player.inventory);
             Console.WriteLine("press any key to continue...");
             Console.ReadLine();
         }
